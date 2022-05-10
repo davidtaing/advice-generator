@@ -8,6 +8,8 @@ interface Slip {
 }
 
 const Home: NextPage = () => {
+  const [slip, setSlip] = useState<Slip | null>(null);
+
   return (
     <div>
       <Head>
