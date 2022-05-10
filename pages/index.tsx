@@ -8,7 +8,11 @@ interface Slip {
 }
 
 const Home: NextPage = () => {
-  const [slip, setSlip] = useState<Slip | null>(null);
+  const [slip, setSlip] = useState<Slip | null>({
+    slip_id: 117,
+    advice:
+      "It is easy to sit up and take notice, what's difficult is getting up and taking action.",
+  });
 
   return (
     <div>
