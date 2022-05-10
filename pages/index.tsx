@@ -1,6 +1,11 @@
+import { useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+
+interface Slip {
+  slip_id: number;
+  advice: string;
+}
 
 const Home: NextPage = () => {
   return (
