@@ -13,6 +13,7 @@ const Home: NextPage = () => {
     advice:
       "It is easy to sit up and take notice, what's difficult is getting up and taking action.",
   });
+  const { slip_id, advice } = slip as Slip;
 
   return (
     <div>
@@ -22,7 +23,20 @@ const Home: NextPage = () => {
         <link rel="icon" href="images/favicon-32x32.png" />
       </Head>
 
-      <main>Advice #</main>
+      <main>
+        <article className="advice-slip">
+          <h4 className="advice-slip__title">ADVICE #{slip_id}</h4>
+          <h2 className="advice-slip__content">&quot;{advice}&quot;</h2>
+          <img
+            className="advice-slip__divider"
+            src="/images/pattern-divider-mobile.svg"
+          />
+          <br />
+          <button className="advice-slip__button">
+            <img src="/images/icon-dice.svg" />
+          </button>
+        </article>
+      </main>
 
       <footer>
         <div className="attribution">
