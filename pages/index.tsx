@@ -1,19 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { getSlip } from "../src/services/slip";
 
 interface Slip {
-  slip_id: number;
+  id: number;
   advice: string;
 }
 
+interface State {
+  slip?: Slip;
+}
+
 const Home: NextPage = () => {
-  const [slip, setSlip] = useState<Slip | null>({
-    slip_id: 117,
-    advice:
-      "It is easy to sit up and take notice, what's difficult is getting up and taking action.",
-  });
-  const { slip_id, advice } = slip as Slip;
+  const [{ slip }, setSlip] = useState<State>({ slip: undefined });
+
+  useEffect(() => {
+    updateSlip();
+  }, []);
+
+  const updateSlip = () => {
+    setSlip({ slip: undefined });
+
+    getSlip().then((data) => {
+      setSlip(data);
+    });
+  };
 
   return (
     <div>
@@ -25,15 +37,17 @@ const Home: NextPage = () => {
 
       <main>
         <article className="advice-slip">
-          <h4 className="advice-slip__title">ADVICE #{slip_id}</h4>
-          <h2 className="advice-slip__content">&quot;{advice}&quot;</h2>
+          <h4 className="advice-slip__title">ADVICE #{slip?.id}</h4>
+          <h2 className="advice-slip__content">
+            {slip ? `"${slip?.advice}"` : "Loading..."}
+          </h2>
           <img
             className="advice-slip__divider"
             src="/images/pattern-divider-mobile.svg"
             srcSet="/images/pattern-divider-mobile.svg 375w, /images/pattern-divider-mobile.svg 1440w"
           />
           <br />
-          <button className="advice-slip__button">
+          <button className="advice-slip__button" onClick={updateSlip}>
             <img src="/images/icon-dice.svg" />
           </button>
         </article>
