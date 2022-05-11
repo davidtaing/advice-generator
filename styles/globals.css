@@ -37,6 +37,10 @@ img {
   color: hsl(228, 45%, 44%);
 }
 
+main {
+  min-height: 100vh;
+}
+
 .advice-slip {
   background-color: var(--dark-grayish-blue);
   width: 343px;
@@ -86,9 +90,14 @@ footer {
 }
 
 @media (min-width: 1440px) {
+  main {
+    display: flex;
+  }
+
   .advice-slip {
     width: 540px;
     padding-inline: 48px;
+    margin: auto auto;
   }
 
   .advice-slip__title {
