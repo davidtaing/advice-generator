@@ -30,6 +30,7 @@ const Home: NextPage = () => {
           <img
             className="advice-slip__divider"
             src="/images/pattern-divider-mobile.svg"
+            srcSet="/images/pattern-divider-mobile.svg 375w, /images/pattern-divider-mobile.svg 1440w"
           />
           <br />
           <button className="advice-slip__button">
