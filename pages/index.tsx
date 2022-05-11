@@ -14,17 +14,22 @@ interface State {
 
 const Home: NextPage = () => {
   const [{ slip }, setSlip] = useState<State>({ slip: undefined });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     updateSlip();
   }, []);
 
   const updateSlip = () => {
+    setLoading(true);
+
     setSlip({ slip: undefined });
 
     getSlip().then((data) => {
       setSlip(data);
     });
+
+    setLoading(false);
   };
 
   return (
@@ -63,7 +68,7 @@ const Home: NextPage = () => {
           >
             Frontend Mentor
           </a>
-          . Coded by <a href="#">Your Name Here</a>.
+          . Coded by <a href="#">David Taing</a>.
         </div>
       </footer>
     </div>
